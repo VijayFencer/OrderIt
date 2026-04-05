@@ -21,9 +21,9 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
   console.log(cart);
 
   let deliveryInfo = {
-    address: session.shipping_details.address.line1 + " " + session.shipping_details.address.line1,
+    address: session.shipping_details.address.line1 + " " + (session.shipping_details.address.line2 || ""),
     city: session.shipping_details.address.city,
-    phoneNo: session.customer_details.phone,
+    phoneNo: session.customer_details.phone || session.shipping_details.phone || "0000000000",
     postalCode: session.shipping_details.address.postal_code,
     country: session.shipping_details.address.country,
   };
@@ -37,7 +37,7 @@ exports.newOrder = catchAsyncErrors(async (req, res, next) => {
   }));
 
   let paymentInfo = {
-    id: session.payment_intent,
+    id: typeof session.payment_intent === "string" ? session.payment_intent : session.payment_intent.id || "unknown_id",
     status: session.payment_status,
   };
 

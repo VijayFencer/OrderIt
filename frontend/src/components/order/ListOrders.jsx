@@ -70,7 +70,7 @@ const ListOrders = () => {
       rows: [],
     };
 
-    if (orders && orders.length>0 && restaurantList.length>0){
+    if (orders && orders.length > 0){
       const sortedOrders =orders.sort((a,b) =>new Date(b.createdAt) - new Date(a.createdAt));
       sortedOrders.forEach((order)=>{
         const orderItemNames = order.orderItems.map(item => item.name).join(",");

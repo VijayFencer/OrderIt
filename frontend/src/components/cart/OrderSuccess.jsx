@@ -1,23 +1,27 @@
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { createOrder } from "../../actions/orderAction";
 
 const OrderSuccess = () => {
-  
   const location = useLocation();
-  
-  //https:// example.com/page?name=JohnDoe&age=25
-  
-  const searchParams= new URLSearchParams(location.search);
-  //{pathName : "https://example.com,
-  // name:"JohnDeo",
-  //age:25}
-  const session_id =searchParams.get("session_id");
+  const searchParams = new URLSearchParams(location.search);
+  const session_id = searchParams.get("session_id");
   const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(createOrder(session_id));
-  },[dispatch,session_id]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (session_id) {
+      dispatch(createOrder(session_id));
+    }
+    
+    // Automatically redirect to the Orders page after 2 seconds
+    const timer = setTimeout(() => {
+      navigate("/eats/orders/me/myOrders");
+    }, 2000);
+
+    return () => clearTimeout(timer);
+  }, [dispatch, session_id, navigate]);
   
   return (
     <>
@@ -29,14 +33,14 @@ const OrderSuccess = () => {
             viewBox="0 0 52 52"
           >
             <circle
-              class="checkmark__circle"
+              className="checkmark__circle"
               cx="26"
               cy="26"
               r="25"
               fill="none"
             />
             <path
-              class="checkmark__check"
+              className="checkmark__check"
               fill="none"
               d="M14.1 27.2l7.1 7.2 16.7-16.8"
             />

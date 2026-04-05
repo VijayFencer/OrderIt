@@ -58,7 +58,7 @@ export const register = (userData) => async (dispatch) => {
   try {
     dispatch({ type: REGISTER_USER_REQUEST });
     const config = {
-      headers: { "Content-Type": "multipart/form-data" },
+      // Axios automatically sets multipart/form-data with the correct boundary
     };
     const { data } = await axios.post(`/api/v1/users/signup`, userData, config);
     dispatch({
@@ -98,9 +98,7 @@ export const updateProfile = (userData) => async (dispatch) => {
   try {
     dispatch({ type: UPDATE_PROFILE_REQUEST });
     const config = {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
+      // Axios automatically sets multipart/form-data with the correct boundary
     };
 
     const { data } = await axios.put(

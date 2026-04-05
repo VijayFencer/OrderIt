@@ -63,7 +63,6 @@ const Cart = () => {
   };
 
   const decreaseQty = (id,quantity)=>{
-    const newQty = quantity-1;
     if (quantity>1){
       const newQty = quantity-1;
       dispatch(updateCartQuantity(id,newQty,alert));

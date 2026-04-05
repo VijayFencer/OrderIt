@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CLEAR_EERORS, CREATE_ORDER_FAIL, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, CREATE_PAYMENT_FAIL, CREATE_PAYMENT_REQUEST, CREATE_PAYMENT_SUCCESS, MY_ORDER_FAIL, MY_ORDER_REQUEST, MY_ORDER_SUCCESS, ORDER_DETAILS_FAIL, ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS } from "../constants/orderConstant";
+import { CLEAR_EERORS, CREATE_ORDER_FAIL, CREATE_ORDER_REQUEST, CREATE_ORDER_SUCCESS, CREATE_PAYMENT_FAIL, CREATE_PAYMENT_REQUEST, MY_ORDER_FAIL, MY_ORDER_REQUEST, MY_ORDER_SUCCESS, ORDER_DETAILS_FAIL, ORDER_DETAILS_REQUEST, ORDER_DETAILS_SUCCESS } from "../constants/orderConstant";
 
 export const createOrder = (session_id) =>async(dispatch) =>{
     try{
@@ -58,7 +58,7 @@ export const myOrders = () => async(dispatch)=>{
     }catch(error){
         dispatch({
             type: MY_ORDER_FAIL,
-            payload:error.reaponse.data.message
+            payload:error.response.data.message
         });
     }
 };
