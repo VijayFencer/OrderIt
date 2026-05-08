@@ -201,7 +201,7 @@ This project is licensed under the MIT License.
 **Vijay Bharath**
 
 * GitHub: [https://github.com/VijayFencer](https://github.com/VijayFencer)
-* LinkedIn: Add your LinkedIn profile here
+* LinkedIn: [(https://www.linkedin.com/in/vijay-bharath-vb/)](https://www.linkedin.com/in/vijay-bharath-vb/)
 
 ---
 
